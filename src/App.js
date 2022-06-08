@@ -1,19 +1,31 @@
-import './App.css';
-// import rocketImg from './assets/rocket.png';
-import { Signup } from './components/Signup';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import LoginForm from "./components/LoginForm";
+import RegistrationForm from "./components/RegistrationForm";
+import ProfilePage from "./pages/ProfilePage";
+import HomePage from "./pages/HomePage";
+import Farmacia from "./pages/Farmacia";
+import Profesionales from "./pages/Profesionales";
+import Consultas from "./pages/Consultas";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
-    <div className="container mt-3">
-      <div className="row">
-        <div className="col-md-5">
-          <Signup />
-        </div>
-        <div className="col-md-7 my-auto">
-          {/* <img className="img-fluid w-100" src={rocketImg} alt=""/> */}
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* <div className="App"> */}
+        <Route path="*" element={<NotFoundPage/>}></Route>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="/crearcuenta" element={<RegistrationForm />}></Route>
+        <Route path="/iniciarsesion" element={<LoginForm />}></Route>
+        <Route path="/perfil" element={<ProfilePage/>}></Route>
+        <Route path="/farmacia" element={<Farmacia />}></Route>
+        <Route path="/profesionales" element={<Profesionales />}></Route>
+        <Route path="/consultas" element={<Consultas />}></Route>
+        {/* </div> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
