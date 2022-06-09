@@ -11,9 +11,10 @@ function LoginForm () {
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email('Invalid email format')
-      .required('Required'),
-    password: Yup.string().required('Required')
+      .email('Formato de correo inválido.')
+      .required('Por favor, ingrese su correo.'),
+    password: Yup.string()
+      .required('Por favor, ingrese su contraseña.')
   })
 
   const onSubmit = values => {
@@ -31,6 +32,7 @@ function LoginForm () {
           <Form>
             <FormikControl
               control='input'
+
               type='email'
               label='Email'
               name='email'

@@ -1,0 +1,12 @@
+.nav-bar{
+   display: flex;
+   background-color: aqua;
+   align-items:flex-start;
+}
+
+.active{
+    color: red;
+}
+.orange{
+    color: orange;
+}
