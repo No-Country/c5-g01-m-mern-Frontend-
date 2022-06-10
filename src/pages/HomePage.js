@@ -1,6 +1,6 @@
 import React from "react";
 import img from "../assets/medica-home-logo.png";
-import LoginForm from "../components/LoginForm";
+import Signin from "../components/Login";
 
 const HomePage = () => {
   return (
@@ -10,7 +10,7 @@ const HomePage = () => {
         <h1>nuestra prioridad.</h1>
       </div>
       <div>
-        <LoginForm />
+        <Signin />
       </div>
       <div>
         <img src={img} alt="medica-imagen"></img>
