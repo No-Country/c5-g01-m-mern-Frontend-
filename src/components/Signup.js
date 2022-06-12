@@ -1,8 +1,8 @@
 import { Form, Formik } from "formik";
+
 import { Link } from "react-router-dom";
-import GoogleLoginBtn from "./GoogleLoginBtn";
-import React from "react";
 import * as Yup from "yup";
+import GoogleLoginBtn from "./GoogleLoginBtn";
 import TextField from "./TextField";
 
 const Signup = () => {
@@ -71,7 +71,8 @@ const Signup = () => {
             <div>
               <GoogleLoginBtn />
             </div>
-            <p>Ya tienes una cuenta?</p> <Link to='/login'>Registrarse</Link>
+            <p>Ya tienes una cuenta?</p>{" "}
+            <Link to="/iniciarsesion">Iniciar Sesión</Link>
           </Form>
         </div>
       )}

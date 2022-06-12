@@ -1,11 +1,12 @@
 import { Form, Formik } from "formik";
-import React from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import GoogleLoginBtn from "./GoogleLoginBtn";
 import TextField from "./TextField";
 
 const Login = () => {
+  const { user, setUser } = useState({ loggedIn: false });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,8 +29,8 @@ const Login = () => {
       onSubmit={(values, { resetForm }) => {
         console.log(values);
         resetForm();
-        if(location.state?.form){
-          navigate(location.state.form)
+        if (location.state?.form) {
+          navigate(location.state.form);
         }
       }}
     >
@@ -43,7 +44,18 @@ const Login = () => {
               name="password"
               type="password"
             />
-            <button type="submit" disabled={!formik.isValid}>
+            <button
+              onClick={() => {
+                if (user.loggedIn) return;
+                setUser({ loggedIn: true });
+
+                if (location.state?.from) {
+                  navigate(location.state.from);
+                }
+              }}
+              type="submit"
+              disabled={!formik.isValid}
+            >
               Continuar
             </button>
             <p>o</p>
@@ -51,7 +63,8 @@ const Login = () => {
             <div>
               <GoogleLoginBtn />
             </div>
-            <p>No tienes una cuenta?</p> <Link to="/signup">Registrarse</Link>
+            <p>No tienes una cuenta?</p>
+            <Link to="/registrarse">Registrarse</Link>
           </Form>
         </div>
       )}

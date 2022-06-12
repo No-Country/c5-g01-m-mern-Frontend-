@@ -1,12 +1,16 @@
-.nav-bar{
-   display: flex;
-   background-color: aqua;
-   align-items:flex-start;
+.hero{
+    height: 100vh;
+    width: 100%;
 }
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.logo{
+   margin-right: 30%;
 
-.active{
-    color: red;
-}
-.orange{
-    color: orange;
 }

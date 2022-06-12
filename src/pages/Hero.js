@@ -1,8 +1,8 @@
-import React from "react";
 import img from "../assets/medica-home-logo.png";
-import Signin from "../components/Login";
+import Login from "../components/Login";
+import Signup from "../components/Signup";
 
-const HomePage = () => {
+const Hero = () => {
   return (
     <>
       <div>
@@ -10,7 +10,8 @@ const HomePage = () => {
         <h1>nuestra prioridad.</h1>
       </div>
       <div>
-        <Signin />
+        <Login />
+        <Signup />
       </div>
       <div>
         <img src={img} alt="medica-imagen"></img>
@@ -19,4 +20,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Hero;

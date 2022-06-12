@@ -1,7 +1,7 @@
-import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const useAuth = () => {
+  // test frontend
   const user = { loggedIn: false };
   return user && user.loggedIn;
 };
@@ -12,7 +12,7 @@ const ProtectedRoutes = () => {
   return isAuth ? (
     <Outlet />
   ) : (
-    <Navigate to="/" replace state={{ from: location }} />
+    <Navigate to="/iniciarsesion" replace state={{ from: location }} />
   );
 };
 
