@@ -1,11 +1,12 @@
 import { Form, Formik } from "formik";
-
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import GoogleLoginBtn from "./GoogleLoginBtn";
-import TextField from "./TextField";
+// import GoogleLoginBtn from "./GoogleLoginBtn";
+import TextField from "../components/TextField";
 
 const Signup = () => {
+
+
   const validate = Yup.object({
     firstName: Yup.string()
       .matches(
@@ -31,6 +32,7 @@ const Signup = () => {
       .oneOf([Yup.ref("password"), null], "La contraseña no coincide.")
       .required("Campo obligatorio."),
   });
+
   return (
     <Formik
       initialValues={{
@@ -63,16 +65,15 @@ const Signup = () => {
               name="confirmPassword"
               type="password"
             />
-            <button type="submit" disabled={!formik.isValid}>
-              Continuar
+            <button 
+            type="submit" 
+            disabled={!formik.isValid}>
+              Registrarse
             </button>
             <p>o</p>
             <span>Iniciar Sesión con Google</span>
-            <div>
-              <GoogleLoginBtn />
-            </div>
-            <p>Ya tienes una cuenta?</p>{" "}
-            <Link to="/iniciarsesion">Iniciar Sesión</Link>
+            <div>{/* <GoogleLoginBtn /> */}</div>
+            <p>Ya tienes una cuenta?</p> <Link to="/login">Iniciar Sesión</Link>
           </Form>
         </div>
       )}

@@ -1,6 +1,7 @@
 .App {
-  display: flex;
-  justify-content: center;
+
+
+
 }
 
 label {
@@ -30,7 +31,6 @@ select {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  /* margin-bottom: 20px; */
 }
 
 .form-control {

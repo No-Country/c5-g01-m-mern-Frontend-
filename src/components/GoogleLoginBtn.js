@@ -1,7 +1,6 @@
 import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 
-
 const GoogleLoginBtn = () => {
   const [user, setUser] = useState({});
 

@@ -5,29 +5,28 @@ import "./styles/Navbar.css";
 const Navbar = () => {
   return (
     <>
-      {/* Logo Management Health */}
       <div className="hero">
         <nav>
-          <NavLink className="logo" to="/home">
+          <NavLink className="logo" to="/profile/home">
             <img src={img} alt="management-health-logo"></img>
           </NavLink>
-          {/* Lista del Navbar */}
+
           <div>
             <ul>
               <li>
-                <NavLink to="/home">Home</NavLink>
+                <NavLink to="/profile/home">Home</NavLink>
               </li>
               <li>
-                <NavLink to="/farmacia">Farmacia</NavLink>
+                <NavLink to="/profile/farmacia">Farmacia</NavLink>
               </li>
               <li>
-                <NavLink to="/profesionales">Profesionales</NavLink>
+                <NavLink to="/profile/profesionales">Profesionales</NavLink>
               </li>
               <li>
-                <NavLink to="/consultas">Consultas</NavLink>
+                <NavLink to="/profile/consultas">Consultas</NavLink>
               </li>
               <li>
-                <NavLink to="/perfil">Perfil</NavLink>
+                <NavLink to="/profile">Perfil</NavLink>
               </li>
             </ul>
           </div>
