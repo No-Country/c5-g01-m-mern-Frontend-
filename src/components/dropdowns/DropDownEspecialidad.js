@@ -5,29 +5,29 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from "reactstrap";
-import ".././components/styles/DropDownZona.css"
 
 
 
-const DropDownZona = (props) => {
+
+const DropDownEspecialidad = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [state, setState] = useState("Zona geográfica");
+  const [state, setState] = useState("Especialidad");
   const toggle = () => setDropdownOpen((prevState) => !prevState);
-  const items = ["CABA", "Prov. Buenos Aires", "Otra Provincia"];
+  const items = ["Clínico", "Cardiología", "Psicología", "Kinesiología","Oncología"];
 
-//   console.log(state);
+  console.log(state);
 
   return (
     <div className="center">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret>{state}</DropdownToggle>
+        <DropdownToggle color="primary" caret>{state}</DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>Seleccione</DropdownItem>
 
           {items.map((val, id) => {
             return (
               <div key={id}>
-                <DropdownItem divider></DropdownItem>
+                <DropdownItem  divider></DropdownItem>
                 <DropdownItem onClick={() => setState(val)}>{val}</DropdownItem>
               </div>
             );
@@ -37,4 +37,4 @@ const DropDownZona = (props) => {
     </div>
   );
 };
-export default DropDownZona;
+export default DropDownEspecialidad;

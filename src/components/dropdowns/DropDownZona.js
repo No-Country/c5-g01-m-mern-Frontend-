@@ -5,20 +5,21 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from "reactstrap";
-import ".././components/styles/DropDownProfesion.css";
 
-const DropDownProfesion = (props) => {
+const DropDownZona = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [state, setState] = useState("Profesión");
+  const [state, setState] = useState("Zona geográfica");
   const toggle = () => setDropdownOpen((prevState) => !prevState);
-  const items = ["Médico", "Enfermero", "Acompañante"];
+  const items = ["CABA", "Prov. Buenos Aires", "Otra Provincia"];
 
-  // console.log(state);
+  console.log(state);
 
   return (
-    <div className="left">
+    <div className="center">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret>{state}</DropdownToggle>
+        <DropdownToggle color="primary" caret>
+          {state}
+        </DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>Seleccione</DropdownItem>
 
@@ -35,5 +36,4 @@ const DropDownProfesion = (props) => {
     </div>
   );
 };
-
-export default DropDownProfesion;
+export default DropDownZona;

@@ -1,9 +1,17 @@
-import React from 'react'
+import CreditCardForm from "../components/CreditCardForms";
 
 const Farmacia = () => {
   return (
-    <div><h1>Farmacia</h1></div>
-  )
-}
+    <div>
 
-export default Farmacia
+    <div>
+      <h1>Farmacia</h1>
+    </div>
+    <div>
+      <CreditCardForm/>
+    </div>
+    </div>
+  );
+};
+
+export default Farmacia;
