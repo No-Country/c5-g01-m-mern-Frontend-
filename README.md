@@ -71,3 +71,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Url info Carrusel
 https://www.geeksforgeeks.org/creating-a-carousel-with-reactjs-slick/
+### Url info NavBar
+https://blog.logrocket.com/create-responsive-navbar-react-css/
