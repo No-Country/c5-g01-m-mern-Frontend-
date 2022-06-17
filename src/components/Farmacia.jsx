@@ -1,7 +1,10 @@
+
+import "../assets/app.css"
+
 const Farmacia = () => {
     return(
         <div>
-            <h1 id="Farmacia">Farmacia</h1>
+            <h1 id="Farmacia">Hola Bobito</h1>
         </div>
     )
 }

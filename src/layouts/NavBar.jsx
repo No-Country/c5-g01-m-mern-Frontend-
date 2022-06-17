@@ -1,6 +1,12 @@
 import { useState } from "react"
 import image from "../assets/images/Logo.jpg"
 import "../assets/app.css"
+import { Link, Routes, Route } from 'react-router-dom'
+import Home from "../components/Home";
+import Farmacia from "../components/Farmacia";
+import Profesionales from "../components/Profesionales";
+import Consultas from "../components/Consultas";
+
 
 
 export default function NavBar() {
@@ -40,18 +46,24 @@ export default function NavBar() {
               }>
               <ul>
                 <li>
-                  <a href="/home">Home</a>
+                  <div className="Nav_DivLink"><Link className="Nav_Link" to="/">Home</Link></div>
                 </li>
                 <li>
-                  <a href="/farmacia">Farmacia</a>
+                 <div className="Nav_DivLink"><Link className="Nav_Link" to="/farmacia">Farmacia</Link></div>  
                 </li>
                 <li>
-                  <a href="/profesionales">Profesionales</a>
+                  <div className="Nav_DivLink"><Link className="Nav_Link" to="/profesionales">Profesionales</Link> </div>  
                 </li>
                 <li>
-                  <a href="/consultas">Consultas</a>
+                  <div className="Nav_DivLink"><Link className="Nav_Link" to="/consultas">Consultas</Link></div>  
                 </li>
               </ul>
+              <Routes>
+                <Route path="Farmacia" element={<Farmacia /> } />
+                  <Route index element= { <Home/> } />                  
+                  <Route path="Profesionales" element= { <Profesionales/> } />
+                  <Route path="Consultas" element= { <Consultas/> } />            
+              </Routes>
             </div>
           </div>
       </nav>

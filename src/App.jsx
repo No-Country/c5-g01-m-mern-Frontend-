@@ -4,6 +4,7 @@ import './assets/styles.css';
 import NavBar from "./layouts/NavBar";
 import Home from "./components/Home"
 import ImageSlider from "./components/ImageSlider";
+import Farmacia from "./components/Farmacia";
 
 const App = () => {
   return (
@@ -13,8 +14,8 @@ const App = () => {
       
     
         <NavBar />
-        <Home />
        
+        
         
        { /*<!--<ImageSlider images={images} />--!>*/}
     </div>

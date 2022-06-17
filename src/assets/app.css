@@ -109,6 +109,7 @@ flex-grow: 0;
   padding: 0;
   align-content: center;
   justify-content: center;
+  z-index: +400;
 }
 
 .navigation-menu li {
@@ -116,6 +117,7 @@ flex-grow: 0;
   list-style-type: none;
   margin: 0 1rem;
   align-content: flex-start;
+  z-index: +400;
 }
 .navigation-menu li a {
   /* increases the surface area of the anchor tag to span more than just the anchor text*/
@@ -129,6 +131,39 @@ flex-grow: 0;
   order: 0;
   flex-grow: 0;
   justify-content: center;
+  z-index: +400;
+}
+
+.Nav_DivLink{
+  margin-left: 50px;
+  text-align: center;
+  width: 9rem;
+  border-radius: 8%;
+}
+
+/* navbar style */
+.ul .Nav_DivLink {
+  position: relative;
+}
+.Nav_DivLink::before {
+  z-index: -300;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #00ee7781;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.4s ease-in-out;
+}
+.Nav_DivLink:hover::before {
+  z-index: -300;
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 .hamburger {
@@ -156,8 +191,8 @@ flex-grow: 0;
 /* Home*/
 .oblongs{
   position: absolute;
-  margin-left: -130px;
-  bottom: 150px;
+  margin-left: -600px;
+  top: 400px;
   float: left;
   max-block-size: 30%;
   display: block;
@@ -246,7 +281,7 @@ flex-grow: 0;
 
 .img-doctora {
   position:absolute;
-  bottom: 200px;
+  top: 140px;
   right: 0px;
   width: 604px;
   height: 666px;
@@ -307,9 +342,9 @@ flex-grow: 0;
   }
   
   #lema {
-    top: 15%;
+    top: 300%;
     left: 20%;
-    width: 80%;
+    width: 60%;
 
     display: flex;
     margin-left: auto;
@@ -320,7 +355,7 @@ flex-grow: 0;
     }
   
     .contButton {
-      top: 500px;
+      top: 800px;
       left: 20%;
       display: flex;
       background: transparent;
@@ -335,7 +370,7 @@ flex-grow: 0;
     }
   
     .button-signin{
-      top: 500px;
+      top: 800px;
       left: 20%;
       background: transparent;
       font-family: var(--poppins);
