@@ -3,8 +3,14 @@ import { useState } from "react";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import "./CreditCardForms.css";
+import swal from "sweetalert";
 
 const CreditCardForm = () => {
+  
+  const handleClick = (e)=>{
+    e.preventDefault();
+    return swal("Compra realizada con éxito!","Gracias por confiar en Management Health", "success")
+  }
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -56,7 +62,7 @@ const CreditCardForm = () => {
           onFocus={(e) => setFocus(e.target.name)}
         ></input>
         <div>
-          <button className="card-btn" type="submit">
+          <button onClick={handleClick} className="card-btn" type="submit">
             Comprar
           </button>
         </div>
