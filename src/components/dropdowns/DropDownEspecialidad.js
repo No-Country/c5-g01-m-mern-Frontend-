@@ -1,26 +1,27 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
 } from "reactstrap";
+import { DropdownsContext } from "../../context/authContext";
 
 
 
 
 const DropDownEspecialidad = (props) => {
+  const {stateEspecialidad,setStateEspecialidad} = useContext(DropdownsContext)
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [state, setState] = useState("Especialidad");
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   const items = ["Clínico", "Cardiología", "Psicología", "Kinesiología","Oncología"];
 
-  console.log(state);
 
   return (
     <div className="center">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle color="primary" caret>{state}</DropdownToggle>
+        <DropdownToggle color="primary" caret>{stateEspecialidad}</DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>Seleccione</DropdownItem>
 
@@ -28,7 +29,7 @@ const DropDownEspecialidad = (props) => {
             return (
               <div key={id}>
                 <DropdownItem  divider></DropdownItem>
-                <DropdownItem onClick={() => setState(val)}>{val}</DropdownItem>
+                <DropdownItem onClick={() => setStateEspecialidad(val)}>{val}</DropdownItem>
               </div>
             );
           })}

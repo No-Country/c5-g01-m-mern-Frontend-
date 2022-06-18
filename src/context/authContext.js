@@ -5,7 +5,13 @@ const MY_AUTH_APP = "MY_AUTH_APP_1";
 
 export const AuthContext = createContext();
 
+export const DropdownsContext = createContext();
 export function AuthContextProvider({ children }) {
+
+  const [stateZona, setZona] = useState('Seleccione')
+  const [stateProfesion, setStateProfesion] = useState('Seleccione')
+  const [stateEspecialidad, setStateEspecialidad] = useState('Seleccione')
+
   const [isAuthenticated, setIsAuthenticated] = useState(
     window.localStorage.getItem(MY_AUTH_APP) ?? false
   );
@@ -29,7 +35,7 @@ export function AuthContextProvider({ children }) {
     [login, logout, isAuthenticated]
   );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+  return <AuthContext.Provider value={value}><DropdownsContext.Provider value={{stateZona,setZona,stateProfesion,setStateProfesion,stateEspecialidad,setStateEspecialidad}}>{children}</DropdownsContext.Provider></AuthContext.Provider>
 }
 
 AuthContextProvider.propTypes = {

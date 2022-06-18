@@ -1,6 +1,6 @@
 #Card_Background{
     width: 310px;
-    height: 425px;
+    height: 435px;
     background-color: #00ee776f;
     margin-left: 20px;
     margin-bottom: 10px;
@@ -10,17 +10,17 @@
     background-color: white;
     position: relative;
     top: 30px;
-    margin-left: 3%;
+    margin-left: 5%;
     width: 90%;
     height: 80px;
 }
 #Card_description{
     background-color: white;
     top: 35px;
-    height: 230px;
+    height: 250px;
     width: 90%;
     position: relative;
-    margin-left: 3%;
+    margin-left: 5%;
 }
 
 #Card_h1{
@@ -46,6 +46,7 @@
 }
 
 #Stars{
+    margin-top: 5px;
     padding-left: 10px;
     display: flex;
 }
@@ -80,42 +81,50 @@
     margin-top: 0;
 }
 
+
 #Card_ConsultaDigital{
     background-color: white;
     border: 2px solid #B632F4;
+    width: 161px;
+    height: 29px;
     color: #B632F4;
     padding-top: 5px;
+    padding-left: 6px;
     padding-bottom: 5px;
-    margin-left: 15%;
+    margin-left: 21%;
+    text-decoration: none;
     padding-right: 5px;
     font-weight: 600;
     cursor: pointer;
+    display: flex;
 }
 
 #Card_Buttons{
     position: relative;
     top: 50px;
-    margin-left: 5%;
+    margin-left: 11%;
 }
 #Card_Enviar{
-    width: 130px;
     border: 2px solid #B632F4;
-    height: 36px;
     background-color:white;
     color: #B632F4;
+    padding: 8px;
     cursor: pointer;
     font-size: 13px;
     font-weight: 500; 
+    text-decoration: none;
 }
 
 #Card_DigitalButton{
     margin-left: 5px;
     cursor: pointer;
     width: 130px;
+    padding: 10px;
     border: none;
     height: 36px;
     background-color: #B632F4;
     color: white;
+    text-decoration: none;
     font-size: 13px;
     font-weight: 500;
 }

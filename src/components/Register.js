@@ -46,9 +46,11 @@ const Register =() => {
         validationSchema={validationSchema}
         onSubmit={ async (values, { resetForm }) => {
           
-          const {email,password,name,lastName} = values
+          const {email,password,name,lastName,password1} = values
           const data = {email,password,name,lastName}
 
+
+          if(password === password1){
             fetch('http://localhost:3080/auth/create-user',{
               method:'POST',
               mode:'cors',
@@ -58,7 +60,14 @@ const Register =() => {
               body:JSON.stringify(data)
             })
             .then(resp => resp.json())
-            .then(respJSON => console.log(respJSON))
+            .then(respJSON => {
+              if(respJSON.msg === 'success'){
+                setSuccessMessage('Success')
+              }
+            })
+
+          }
+
           
         
           resetForm();
@@ -102,6 +111,7 @@ const Register =() => {
               />
 
             
+              <div style={{width:'45%',borderLeft:'4px solid #41CE12',backgroundColor:'#C2EBB4',textAlign:'center'}}><p style={{color:'green'}}>{successMessage}</p></div>
               <button
               style={{backgroundColor:'#CFCFCF',border:'none',width:'45%',height:'50px',color:'white'}}
                 type="submit"
@@ -109,7 +119,7 @@ const Register =() => {
               >
                 Registrar
               </button>
-              <p>Tienes cuenta? <Link to="/login">Logueate</Link></p>
+              <p id='Form_HaveAccount'>Tienes cuenta? <Link id='Form_HaveAccLink' to="/login">Logueate</Link></p>
             </Form>
         )}
       </Formik>

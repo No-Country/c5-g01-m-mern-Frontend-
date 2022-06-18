@@ -13,9 +13,9 @@ const TextField = ({ label, ...props }) => {
         {...field}
         {...props}
         autoComplete="off"
-        style={{backgroundColor:'#D9D9D9',borderRadius:'0',width:'45%',height:'54px'}}
+        style={{backgroundColor:'#D9D9D9',borderRadius:'0',width:'45%',height:'54px',marginBottom:'5px'}}
       />
-      <div style={{backgroundColor:'#ff000083',color:'red',borderLeft:'4px solid red',width:'45%'}}><ErrorMessage component="div" name={field.name} className="error" /></div>
+      <div style={{backgroundColor:'#FFDBDB',color:'red',borderLeft:'4px solid red',width:'45%',textAlign:'center'}}><div style={{paddingLeft:'10px'}}><ErrorMessage component="div" name={field.name} className="error" /></div></div>
     </div>
   );
 };
