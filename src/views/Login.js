@@ -14,10 +14,13 @@ const Login = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  function handleClick() {
-    login();
-    navigate(state?.location?.pathname ?? "/");
-  }
+   function handleClick() {
+    setTimeout(() => {
+      login();
+      navigate(state?.location?.pathname ?? "/");
+    }, 2000);
+
+   }
 
   const validate = Yup.object({
     email: Yup.string().email("Email inválido.").required("Campo obligatorio."),
@@ -34,22 +37,19 @@ const Login = () => {
       <div>
         <img src={img} alt="medica-imagen"></img>
       </div>
+      
       <Formik
         initialValues={{
-          name: "",
-          lastName: "",
           email: "",
           password: "",
-          confirmPassword: "",
         }}
         validationSchema={validate}
         onSubmit={ async (values, { resetForm }) => {
           
-          const {name,lastName,email,password,confirmPassword} = await values
-          const data = {name,lastName,email,password}
-    
-          if(password === confirmPassword){
-            fetch('http://localhost:3000/auth/logIn',{
+          const {email,password} = values
+          const data = {email,password}
+
+            fetch('http://localhost:3080/auth/logIn',{
               method:'POST',
               mode:'cors',
               headers:{
@@ -57,7 +57,9 @@ const Login = () => {
               },
               body:JSON.stringify(data)
             })
-          }
+            .then(resp => resp.json())
+            .then(respJSON => console.log(respJSON))
+          
         
           resetForm();
         }}
@@ -65,16 +67,17 @@ const Login = () => {
         {(formik) => (
           <div>
             <h1>Iniciar Sesión para continuar</h1>
-            <Form>
-              <TextField placeholder="Email" name="email" type="email" />
+            <Form onSubmit={formik.handleSubmit}>
+              <TextField placeholder="Email" name="email" value={formik.values.email} type="email" />
 
               <TextField
                 placeholder="Contraseña"
                 name="password"
+                value={formik.values.password}
                 type="password"
               />
               <button
-                onClick={handleClick}
+               onClick={handleClick}
                 type="submit"
                 disabled={!formik.isValid}
               >

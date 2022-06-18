@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import Register from "./components/Register";
 import PrivateRoute from "./components/router/PrivateRoute";
 import PublicRoute from "./components/router/PublicRoute";
 import {
@@ -38,7 +39,7 @@ function App() {
         <Routes>
           <Route element={<PublicRoute />}>
             <Route path={LOGIN} element={<Login />}></Route>
-            <Route path={SIGNUP} element={<Signup />}></Route>
+            <Route path={SIGNUP} element={<Register />}></Route>
             <Route path={NOT_FOUND_PAGE} element={<NotFoundPage />}></Route>
           </Route>
           <Route element={<PrivateRoute />}>

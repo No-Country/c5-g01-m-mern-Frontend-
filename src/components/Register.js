@@ -1,154 +1,118 @@
 import React,{useState} from 'react'
 import * as Yup from 'yup'
-import { useFormik } from 'formik'
 import './styles/Register.css'
 import { Link } from 'react-router-dom'
-import Navbar from "./Navbar";
+import { Formik,Form } from 'formik'
 import ImageBackground from './assets/adsa.png'
+import TextField from './TextField'
 const Register =() => {
 
   
  const [errorMessageBackend, seterrorMessageBackend] = useState()
  const [successMessage, setSuccessMessage] = useState()
 
-  const formik = useFormik({
-    initialValues:{
-      name:'',
-      lastName:'',
-      password:'',
-      email:'',
-      password1:'',
-      cellphone:'',
-    },
-    validationSchema:Yup.object({
+
+  const validationSchema = Yup.object({
 
       name:Yup.string()
-      .required('First name required'),
+      .required('Nombre requerido'),
    
       lastName:Yup.string()
-      .required('Last name required'),
+      .required('Apellido requerido'),
 
-      password:
-      Yup.string()
-      .required('Password required'),
+      password: Yup.string()
+      .min(8, "La contraseña debe contener al menos 8 caracteres.")
+      .required("Contraseña requerida."),
+  
+      password1: Yup.string()
+      .min(8, "La contraseña debe contener al menos 8 caracteres.")
+      .required("Contraseña requerida."),
 
-      password1:
-      Yup.string()
-      .required('Password required'),
-
-      email:
-      Yup.string()
-      .email('not email')
-      .required('Email required'),
-
-      cellphone:
-      Yup.number()
-      .required('Cellphone required'),
-
-    }),
-    onSubmit: async valores=>{
-      console.log(valores)
-      const {password,password1} = valores;
-       if(password === password1){
-          fetch('http://localhost:3000/auth/create-user',{
-            method:'POST',
-            mode:'cors',
-            headers:{
-              'Content-Type':'application/json'
-            },
-            body:JSON.stringify(valores)
-          })
-          .then(resp=> resp.json())
-          .then(respJSON => {
-            console.log(respJSON)
-             if(respJSON.msg === 'Ya existe un usuario con este mail'){
-               seterrorMessageBackend(respJSON.msg)
-               setSuccessMessage()
-             }
-             else{
-                setSuccessMessage(respJSON.msg)
-                seterrorMessageBackend()
-             }
-          })
-
-
-    }
-    else{
-      seterrorMessageBackend('Password are not the same')
-    }
-
-  }})
+      email: Yup.string().email("Email inválido.").required("Campo obligatorio.")
+  });
 
 
   return (
     <>
-    <Navbar/>
       <div>
-        <form id='Register_Form'  onSubmit={formik.handleSubmit}>
-          <div className='Register_InputDivs'>
-              <label>First Name</label>
-              <input className='Form_Inputs'  name='name' type='name' value={formik.values.name} onChange={formik.handleChange}  variant='filled'/> 
-          </div>
-
-          {formik.errors.name ?
-             <div className='Form_ErrorMsg'>  
-                 <p className='font-bold'>{formik.errors.name}</p>
-             </div> 
-             : null}
-
-          <div className='Register_InputDivs'>
-             <label>Last Name</label>
-             <input className='Form_Inputs'  name='lastName' type='lastName' value={formik.values.lastName} onChange={formik.handleChange} onBlur={formik.handleBlur} variant='filled'/> 
-          </div> 
-
-          {formik.errors.lastName ?
-             <div className='Form_ErrorMsg'>  
-                 <p className='font-bold'>{formik.errors.lastName}</p>
-             </div> 
-             : null}
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+          password1:"",
+          name:"",
+          lastName:""
+        }}
+        validationSchema={validationSchema}
+        onSubmit={ async (values, { resetForm }) => {
           
-          <div className='Register_InputDivs'>
-           <label>E-mail</label>
-           <input className='Form_Inputs'  type='email' name='email'  value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} variant='filled'/> 
-          </div>
+          const {email,password,name,lastName} = values
+          const data = {email,password,name,lastName}
 
-          {formik.errors.email ?
-             <div className='Form_ErrorMsg'>  
-                 <p className='font-bold'>{formik.errors.email}</p>
-             </div> 
-             : null}
+            fetch('http://localhost:3080/auth/create-user',{
+              method:'POST',
+              mode:'cors',
+              headers:{
+                'Content-Type':'application/json'
+              },
+              body:JSON.stringify(data)
+            })
+            .then(resp => resp.json())
+            .then(respJSON => console.log(respJSON))
           
-         
-         <div className='Register_InputDivs'>
-           <label>Password</label>
-           <input className='Form_Inputs'  type='password' name='password'  value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} variant='filled'/> 
-         </div>
+        
+          resetForm();
+        }}
+      >
+        {(formik) => (
+  
+            <Form id='Register_Form'  onSubmit={formik.handleSubmit}>
+        
+            <label>Nombre</label>
+              <TextField
+                name="name"
+                value={formik.values.name}
+                type="text"
+              /> 
 
-         
-         {formik.errors.password ?
-             <div className='Form_ErrorMsg'>  
-                 <p className='font-bold'>{formik.errors.password}</p>
-             </div> 
-             : null}
-          
-         
-         <div className='Register_InputDivs'>
-           <label>Re-Write password</label>
-           <input className='Form_Inputs'  type='password'  value={formik.values.password1} onChange={formik.handleChange} onBlur={formik.handleBlur} name='password1' variant='filled'/> 
-         </div>
+           <label>Apellido</label>
+              <TextField
+                name="lastName"
+                value={formik.values.lastName}
+                type="text"
+              /> 
+              
 
-         {formik.errors.password1 ?
-             <div className='Form_ErrorMsg'>  
-                 <p className='font-bold'>{formik.errors.password1}</p>
-             </div> 
-             : null}
+              <label>E-mail</label>
+              <TextField name="email" value={formik.values.email} type="email" />
+              
+              
+              <label>Contraseña</label>
+              <TextField
+                name="password"
+                value={formik.values.password}
+                type="password"
+              />
 
-        { errorMessageBackend? <div>{errorMessageBackend}</div> : null} 
-        { successMessage? <div>{successMessage}</div> : null} 
-         <button id='Form_buttonRegister' type='submit'>Registrate</button>
-         <p id='Form_HaveAccount'>Tienes cuenta?  <Link id='Form_HaveAccLink' to='/'>Logueate</Link></p>
+          <label>Reescribir contraseña</label>
+              <TextField
+                name="password1"
+                value={formik.values.password1}
+                type="password"
+              />
 
-        </form>
+            
+              <button
+              style={{backgroundColor:'#CFCFCF',border:'none',width:'45%',height:'50px',color:'white'}}
+                type="submit"
+                disabled={!formik.isValid}
+              >
+                Registrar
+              </button>
+              <p>Tienes cuenta? <Link to="/login">Logueate</Link></p>
+            </Form>
+        )}
+      </Formik>
         <img id='Background_Photo' src={ImageBackground}/>
         <div id='Background_Oblong'></div>
         <div id='Background_Oblong2'></div>

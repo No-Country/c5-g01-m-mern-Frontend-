@@ -1,7 +1,7 @@
 #Register_Form{
     position: absolute;
     left: 25%;
-    width: 18%;
+    width: 40%;
     top: 200px;
     height: auto;
     text-align: start;
@@ -9,15 +9,38 @@
    
 }
 
-.Form_ErrorMsg{
-    background-color: #f406064c;
-    color: rgb(255, 0, 0);
-    font-weight: 500;
-    border-left: 4px solid red;
-    width: 98%;
-    text-align: center;
-    height: 30px;
-}
+label {
+
+    display: flex;
+    margin-bottom: 0;
+  }
+  
+  input + label {
+
+    display: inline-flex;
+    margin-right: 20px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    display: block;
+    width: 400px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-control {
+    margin-bottom: 20px;
+  }
 
 .Form_Inputs{
     border: none;
