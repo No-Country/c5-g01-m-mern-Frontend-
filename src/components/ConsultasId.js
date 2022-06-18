@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import { DayPicker } from 'react-day-picker';
 import { format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
+import Swal from 'sweetalert2'
 
 const ConsultasId =() => {
   const id = useParams()
@@ -20,7 +21,17 @@ const ConsultasId =() => {
 
   const [professional, setProfessional] = useState()
 
-
+    const crearConsulta = (e)=>{
+      e.preventDefault()
+      Swal.fire({
+        icon: 'success',
+        title: 'Se ha creado con exito la consulta',
+        text: 'Aguarde a la respuesta',
+      })
+      
+    }
+    
+    
     useEffect(() => {
 
         if(id){
@@ -75,7 +86,7 @@ const ConsultasId =() => {
                 <option>20:00 a 21:00</option>
                 <option>21:00 a 22:00</option>
               </select>
-                 <button style={{marginTop:'20px',padding:'10px',width:'100%',border:'none',color:'white',backgroundColor:'#B632F4'}} type='submit'>Enviar fecha</button>
+                 <button onClick={crearConsulta} style={{marginTop:'20px',padding:'10px',width:'100%',border:'none',color:'white',backgroundColor:'#B632F4'}} type='submit'>Enviar fecha</button>
               </form> 
 
     
