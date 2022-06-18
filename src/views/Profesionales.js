@@ -64,7 +64,7 @@ const Profesionales = () => {
         </div>
           </div>
 
-
+<div style={{display:'flex',width:'100%',justifyContent:'center',marginTop:'10px'}}>
           { professionals?
         professionals.map(item => (
         <div key={item._id} id='Card_Background'>
@@ -119,6 +119,7 @@ const Profesionales = () => {
     )) 
    : null
 }
+</div>
         {errorMessage ? <p>{errorMessage}</p> : null}  
           
         <div>

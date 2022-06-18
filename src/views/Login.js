@@ -1,10 +1,11 @@
 import { Form, Formik } from "formik";
+import { useContext } from "react";
 // import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import img from "../assets/medica-home-logo.png";
 import TextField from "../components/TextField";
-import { useAuthContext } from "../context/authContext";
+import { DropdownsContext, useAuthContext } from "../context/authContext";
 
 const Login = () => {
   // const EMAIL = "gabriel@mail.com";
@@ -13,6 +14,7 @@ const Login = () => {
   const { login } = useAuthContext();
   const navigate = useNavigate();
   const { state } = useLocation();
+  const {setUserInfo} = useContext(DropdownsContext)
 
    function handleClick() {
     setTimeout(() => {
@@ -58,7 +60,7 @@ const Login = () => {
               body:JSON.stringify(data)
             })
             .then(resp => resp.json())
-            .then(respJSON => console.log(respJSON))
+            .then(respJSON =>setUserInfo(respJSON))
           
         
           resetForm();
@@ -83,10 +85,6 @@ const Login = () => {
               >
                 Iniciar Sesión
               </button>
-
-              <p>o</p>
-              <span>Iniciar Sesión con Google</span>
-              <div>{/* <GoogleLoginBtn /> */}</div>
               <p>No tienes una cuenta?</p>
               <Link to="/signup">Registrarse</Link>
             </Form>

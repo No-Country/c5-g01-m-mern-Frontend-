@@ -4,6 +4,7 @@ import "./App.css";
 import Consultas from "./components/Consultas";
 import ConsultasId from "./components/ConsultasId";
 import ConsultaText from "./components/ConsultaText";
+import CreditCardForm from "./components/CreditCardForms";
 import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import PrivateRoute from "./components/router/PrivateRoute";
@@ -20,6 +21,7 @@ import {
   PROFILE,
   CONSULTASTEXT,
   SIGNUP,
+  PAGO,
 } from "./config/routes/paths";
 import { AuthContextProvider } from "./context/authContext";
 import Farmacia from "./views/Farmacia";
@@ -50,9 +52,10 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path={HOME} element={<Home />}></Route>
             <Route path={FARMACIA} element={<Farmacia />}></Route>
+            <Route path={PAGO} element={<CreditCardForm />}></Route>
             <Route path={PROFILE} element={<Profile />}></Route>
             <Route path={PROFESIONALES} element={<Profesionales />}></Route>
-     
+         
            <Route path={CONSULTAS} element={<Consultas />}>
             </Route>
             <Route path={CONSULTASID} element={<ConsultasId/>}></Route>
