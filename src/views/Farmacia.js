@@ -23,7 +23,7 @@ const Farmacia = () => {
     <div>
 
 
-    <div style={{display:'flex',width:'95%',position:'relative',left:'2%',justifyContent:'space-between'}}><h1>Farmacia</h1> <Link to='pago' style={{border:'none',background:'none'}}><p style={{fontSize:'30PX'}}><AiOutlineShoppingCart/></p></Link> </div>
+    <div style={{display:'flex',width:'95%',position:'relative',left:'2%',justifyContent:'end'}}><Link to='pago' style={{border:'none',background:'none'}}><p style={{fontSize:'30PX'}}><AiOutlineShoppingCart/></p></Link> </div>
 
 
 

@@ -33,7 +33,7 @@ const Consultas =() => {
     <>
 
 
-<h1 style={{marginLeft:'20px',marginTop:'20px'}}>Pedi una consulta con alguno de los profesionales</h1>
+<h1 style={{position:'relative',width:'90%',left:'8%',marginTop:'20px'}}>Pedi una consulta con alguno de los profesionales</h1>
 
 <div style={{'display':'flex',marginTop:'20PX',justifyContent:'center',flexWrap:'wrap'}}>
 

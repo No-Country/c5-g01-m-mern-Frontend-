@@ -16,7 +16,7 @@ const DropDownZona = (props) => {
   return (
     <div className="center">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle color="primary" caret>
+        <DropdownToggle style={{width:'200px',color:'black',backgroundColor:'White'}}  caret>
           {stateZona}
         </DropdownToggle>
         <DropdownMenu>
@@ -25,7 +25,7 @@ const DropDownZona = (props) => {
           {items.map((val, id) => {
             return (
               <div key={id}>
-                <DropdownItem divider></DropdownItem>
+                <DropdownItem style={{width:'200px'}} divider></DropdownItem>
                 <DropdownItem onClick={() => setZona(val)}>{val}</DropdownItem>
               </div>
             );

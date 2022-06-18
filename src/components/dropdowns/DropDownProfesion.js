@@ -18,14 +18,14 @@ const DropDownProfesion = (props) => {
   return (
     <div className="left">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle color="primary" caret>{stateProfesion}</DropdownToggle>
+        <DropdownToggle  style={{width:'200px',backgroundColor:'white',color:'black'}}  caret>{stateProfesion}</DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>Seleccione</DropdownItem>
 
           {items.map((val, id) => {
             return (
-              <div key={id}>
-                <DropdownItem divider></DropdownItem>
+              <div  key={id}>
+                <DropdownItem  style={{width:'200px'}} divider></DropdownItem>
                 <DropdownItem onClick={() => setStateProfesion(val)}>{val}</DropdownItem>
               </div>
             );

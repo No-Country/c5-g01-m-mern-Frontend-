@@ -5,7 +5,6 @@ import Consultas from "./components/Consultas";
 import ConsultasId from "./components/ConsultasId";
 import ConsultaText from "./components/ConsultaText";
 import CreditCardForm from "./components/CreditCardForms";
-import Navbar from "./components/Navbar";
 import Register from "./components/Register";
 import PrivateRoute from "./components/router/PrivateRoute";
 import PublicRoute from "./components/router/PublicRoute";
@@ -24,6 +23,7 @@ import {
   PAGO,
 } from "./config/routes/paths";
 import { AuthContextProvider } from "./context/authContext";
+import NavBar from "./layouts/NavBar";
 import Farmacia from "./views/Farmacia";
 import Home from "./views/Home";
 import Login from "./views/Login";
@@ -31,7 +31,6 @@ import Logout from "./views/Logout";
 import NotFoundPage from "./views/NotFoundPage";
 import Profesionales from "./views/Profesionales";
 import Profile from "./views/Profile";
-import Signup from "./views/Signup";
 
 export const UserContext = createContext();
 
@@ -40,7 +39,7 @@ function App() {
   return (
     <AuthContextProvider value={{ user, setUser }}>
       <BrowserRouter>
-        <Navbar />
+        <NavBar />
 
          <Routes>
           <Route element={<PublicRoute />}>

@@ -7,11 +7,15 @@ const Home = () => {
       <div>
 
       </div>
-      <div>
+
+      <div> 
+
         <img src={img} alt=""></img>
       </div>
       <div>
         <img src={logo} alt=""></img>
+
+
       </div>
     </div>
   );

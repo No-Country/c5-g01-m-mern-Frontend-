@@ -35,6 +35,7 @@ const Profesionales = () => {
       }
       if(respJSON.msg ==='Success'){
         setProfessionals([respJSON.data])
+        setErrormessage(null)
       }
  })}
 
@@ -44,15 +45,15 @@ const Profesionales = () => {
 
   return (
     <>
-      <div>
+      <div style={{display:'flex',justifyContent:'center'}}>
         <img src={logo} alt="grupo-médicos-foto"></img>
       </div>
 
-      <div>
-        <p>Búsqueda de profesional de salud</p>
+      <div style={{display:'flex',justifyContent:'center'}}>
+        <p style={{fontWeight:'bolder'}}>Búsqueda de profesional de salud</p>
       </div>
 
-      <div className="dropdown-container">
+      <div style={{position:'relative',left:'20%',width:'60%',display:'flex',justifyContent:'space-around'}}>
         <div className="dropdown-left">
           <DropDownProfesion/>
         </div>
@@ -120,12 +121,12 @@ const Profesionales = () => {
    : null
 }
 </div>
-        {errorMessage ? <p>{errorMessage}</p> : null}  
+        {errorMessage ? <div style={{width:'100%',display:'flex',marginTop:'80px',justifyContent:'center'}}> <div style={{background:'#FFDBDB',border:'2px solid red'}}><p style={{marginTop:'10px',padding:'10px',color:'red'}}>{errorMessage}</p></div></div> : null}  
           
-        <div>
-          <button onClick={getProfessional}  className="dropdown-btn"
+        <div style={{display:'flex',justifyContent:'center',marginTop:'80px'}}>
+          <button onClick={getProfessional}  style={{border:'none',width:'424px'}}
           type="submit">
-            Buscar
+            <p style={{paddingTop:'14px',backgroundColor:'#B632F4',color:'white',fontWeight:600,height:'54px'}}>Buscar</p>
           </button>
         </div>
     </>
