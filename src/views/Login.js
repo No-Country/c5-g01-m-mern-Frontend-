@@ -36,15 +36,29 @@ const Login = () => {
       </div>
       <Formik
         initialValues={{
-          firstName: "",
+          name: "",
           lastName: "",
           email: "",
           password: "",
           confirmPassword: "",
         }}
         validationSchema={validate}
-        onSubmit={(values, { resetForm }) => {
-          console.log(values);
+        onSubmit={ async (values, { resetForm }) => {
+          
+          const {name,lastName,email,password,confirmPassword} = await values
+          const data = {name,lastName,email,password}
+    
+          if(password === confirmPassword){
+            fetch('http://localhost:3000/auth/logIn',{
+              method:'POST',
+              mode:'cors',
+              headers:{
+                'Content-Type':'application/json'
+              },
+              body:JSON.stringify(data)
+            })
+          }
+        
           resetForm();
         }}
       >
