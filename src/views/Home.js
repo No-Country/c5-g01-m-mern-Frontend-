@@ -3,15 +3,11 @@ import logo from "../assets/enfermeras-home-logo.png";
 
 const Home = () => {
   return (
-    <div>
-      <div>
-
-      </div>
-
-      <div> 
+    <div style={{display:'flex',justifyContent:'center',marginTop:'7%'}}>
+  
 
         <img src={img} alt=""></img>
-      </div>
+
       <div>
         <img src={logo} alt=""></img>
 

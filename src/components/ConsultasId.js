@@ -9,15 +9,6 @@ import Swal from 'sweetalert2'
 
 const ConsultasId =() => {
   const id = useParams()
-  // const [selectedDay, setSelectedDay] = useState();
-
-
-
-  // const footer = selectedDay ? (
-  //   <p>You selected {format(selectedDay, 'PPP')}.</p>
-  // ) : (
-  //   <p>Please pick a day.</p>
-  // );
 
   const [professional, setProfessional] = useState()
 

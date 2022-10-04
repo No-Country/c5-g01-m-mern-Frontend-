@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import * as Yup from 'yup'
-import './styles/Register.css'
+import '../styles/Register.css'
 import { Link } from 'react-router-dom'
 import { Formik,Form } from 'formik'
-import ImageBackground from './assets/adsa.png'
-import TextField from './TextField'
+import ImageBackground from '../assets/adsa.png'
+import TextField from '../components/TextField'
 const Register =() => {
 
   
@@ -44,10 +44,14 @@ const Register =() => {
           lastName:""
         }}
         validationSchema={validationSchema}
-        onSubmit={ async (values, { resetForm }) => {
+        onSubmit={ async (values) => {
           
           const {email,password,name,lastName,password1} = values
           const data = {email,password,name,lastName}
+
+          if(password1 !== password){
+            seterrorMessageBackend('No coinciden las contraseñas')
+          }
 
 
           if(password === password1){
@@ -61,16 +65,18 @@ const Register =() => {
             })
             .then(resp => resp.json())
             .then(respJSON => {
+              console.log(respJSON)
               if(respJSON.msg === 'success'){
                 setSuccessMessage('Success')
+                seterrorMessageBackend()
+              }
+              else{
+                seterrorMessageBackend(respJSON.msg)
               }
             })
 
           }
 
-          
-        
-          resetForm();
         }}
       >
         {(formik) => (
@@ -112,6 +118,7 @@ const Register =() => {
 
             
               <div style={{width:'45%',borderLeft:'4px solid #41CE12',backgroundColor:'#C2EBB4',textAlign:'center'}}><p style={{color:'green'}}>{successMessage}</p></div>
+              <div style={{width:'45%',borderLeft:'4px solid red',backgroundColor:'	#FA8072',textAlign:'center'}}><p style={{color:'reed'}}>{errorMessageBackend}</p></div>
               <button
               style={{backgroundColor:'#CFCFCF',border:'none',width:'45%',height:'50px',color:'white'}}
                 type="submit"

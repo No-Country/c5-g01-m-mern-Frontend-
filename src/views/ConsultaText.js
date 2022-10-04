@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom'
-import './styles/ConsultasText.css'
+import '../styles/ConsultasText.css'
 import Swal from 'sweetalert2'
 const ConsultaText = () => {
 

@@ -1,28 +1,19 @@
 import { Form, Formik } from "formik";
 import { useContext } from "react";
-// import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import * as Yup from "yup";
 import img from "../assets/medica-home-logo.png";
 import TextField from "../components/TextField";
 import { DropdownsContext, useAuthContext } from "../context/authContext";
 
 const Login = () => {
-  // const EMAIL = "gabriel@mail.com";
-  // const CONTRASENA = 12345678;
-
   const { login } = useAuthContext();
   const navigate = useNavigate();
   const { state } = useLocation();
   const {setUserInfo} = useContext(DropdownsContext)
+  const [ErrorLogin, setErrorLogin] = useState()
 
-   function handleClick() {
-    setTimeout(() => {
-      login();
-      navigate(state?.location?.pathname ?? "/");
-    }, 2000);
-
-   }
 
   const validate = Yup.object({
     email: Yup.string().email("Email inválido.").required("Campo obligatorio."),
@@ -32,21 +23,14 @@ const Login = () => {
   });
   return (
     <>
-      <div>
-        <h1>Hacemos de su salud y bienestar</h1>
-        <h1>nuestra prioridad.</h1>
-      </div>
-      <div>
-        <img src={img} alt="medica-imagen"></img>
-      </div>
-      
+    <div style={{marginTop:'7%',marginLeft:'5%',display:'flex',justifyContent:'center'}}>
       <Formik
         initialValues={{
           email: "",
           password: "",
         }}
         validationSchema={validate}
-        onSubmit={ async (values, { resetForm }) => {
+        onSubmit={ async (values) => {
           
           const {email,password} = values
           const data = {email,password}
@@ -60,15 +44,29 @@ const Login = () => {
               body:JSON.stringify(data)
             })
             .then(resp => resp.json())
-            .then(respJSON =>setUserInfo(respJSON))
-          
+            .then(resp => {
+              console.log(resp.msg)
+              if(resp.msg ==='No existe ningun usuario con este mail'){
+              setErrorLogin(resp.msg)
+              }
+              else if(resp.msg === 'La contraseña es incorrecta'){
+              setErrorLogin(resp.msg)
+              }
+              else{
+                setUserInfo(resp)
+                setTimeout(() => {
+                  login();
+                  navigate(state?.location?.pathname ?? "/");
+                }, 500);
+            
+              }
+            })      
         
-          resetForm();
         }}
       >
         {(formik) => (
-          <div>
-            <h1>Iniciar Sesión para continuar</h1>
+          <div style={{width:'35%',marginTop:'5%'}}>
+            <h1>Iniciar Sesión</h1>
             <Form onSubmit={formik.handleSubmit}>
               <TextField placeholder="Email" name="email" value={formik.values.email} type="email" />
 
@@ -78,20 +76,29 @@ const Login = () => {
                 value={formik.values.password}
                 type="password"
               />
+
               <button
-               onClick={handleClick}
+              style={{width:'45%',height:'50px',borderStyle:'none'}}
                 type="submit"
                 disabled={!formik.isValid}
               >
                 Iniciar Sesión
               </button>
+
               <p>No tienes una cuenta?</p>
-              <Link to="/signup">Registrarse</Link>
+              <Link type="Iniciar Sesion" to="/signup">Registrarse</Link>
             </Form>
           </div>
         )}
       </Formik>
+      <div>
+        <img src={img} style={{height:'75vh',overflow:'hidden'}}  alt="medica-imagen"></img>
+      </div>
+      </div>
+      
+
     </>
+
   );
 };
 export default Login;

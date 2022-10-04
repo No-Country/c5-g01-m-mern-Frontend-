@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from 'react'
-import Navbar from './Navbar'
 import { Link, useLocation } from 'react-router-dom'
-import './styles/Consultas.css'
+import '../styles/Consultas.css'
 import {useParams} from 'react-router-dom';
 import { Icon } from '@iconify/react';
 

@@ -11,11 +11,10 @@ import TensioMetro from '../assets/images/Tensiometro.jpg'
 import SillaRuedas from '../assets/images/Silla-de-ruedas.jpg'
 
 
-function CardItem ({image, name, price, buttonAdd,id}){
+function CardItem ({image, name, price,id}){
 
 
-  const {itemCart,setCart,userInfo,setUserInfo} = useContext(DropdownsContext);
-  console.log(userInfo)
+  const {itemCart,setCart,userInfo} = useContext(DropdownsContext);
   const date = new Date()
  
    switch (name){
@@ -44,7 +43,6 @@ function CardItem ({image, name, price, buttonAdd,id}){
     break;
   }
 
-  console.log(itemCart)
 
     return (
       

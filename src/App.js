@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Consultas from "./components/Consultas";
 import ConsultasId from "./components/ConsultasId";
-import ConsultaText from "./components/ConsultaText";
-import CreditCardForm from "./components/CreditCardForms";
-import Register from "./components/Register";
+import ConsultaText from "./views/ConsultaText";
+import CreditCardForm from "./views/CreditCardForms";
+import Register from "./views/Register";
 import PrivateRoute from "./components/router/PrivateRoute";
 import PublicRoute from "./components/router/PublicRoute";
 import {

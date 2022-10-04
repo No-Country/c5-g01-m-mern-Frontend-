@@ -2,7 +2,6 @@ import logo from "../assets/grupo-medicos-profesionales.png";
 import DropDownEspecialidad from "../components/dropdowns/DropDownEspecialidad";
 import DropDownProfesion from "../components/dropdowns/DropDownProfesion";
 import DropDownZona from "../components/dropdowns/DropDownZona";
-import "../views/Profesionales.css";
 import { useContext,useState} from "react";
 import { DropdownsContext } from "../context/authContext";
 import { Icon } from '@iconify/react';
@@ -31,11 +30,12 @@ const Profesionales = () => {
     .then(respJSON => {
       console.log(respJSON)
       if (respJSON.msg === 'Lamentablemente, no existe ningun profesional con estas caracteristicas'){
-        setErrormessage('Lamentablemente, no existe ningun profesional con estas caracteristicas')
+        setErrormessage(respJSON.msg)
+        setProfessionals()
       }
       if(respJSON.msg ==='Success'){
         setProfessionals([respJSON.data])
-        setErrormessage(null)
+        setErrormessage()
       }
  })}
 
@@ -68,7 +68,7 @@ const Profesionales = () => {
 <div style={{display:'flex',width:'100%',justifyContent:'center',marginTop:'10px'}}>
           { professionals?
         professionals.map(item => (
-        <div key={item._id} id='Card_Background'>
+        <div style={{marginTop:'5%'}} key={item._id} id='Card_Background'>
 
         <div id='Card_Name'>
         

@@ -1,16 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext, useEffect, useState } from "react";
+import { DropdownsContext } from "../context/authContext";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
-import "./CreditCardForms.css";
 import swal from "sweetalert";
-import { DropdownsContext } from "../context/authContext";
 
 const CreditCardForm = () => {
 
 const [drug, setDrug] = useState()
-  const {itemCart} = useContext(DropdownsContext)
-  console.log(itemCart)
+const {itemCart} = useContext(DropdownsContext)
+
   useEffect(() => {
     const data = itemCart;
     fetch(`http://localhost:3080/drug/get-drugsById/${data.drug}`)
