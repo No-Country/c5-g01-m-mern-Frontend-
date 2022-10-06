@@ -32,7 +32,7 @@ const Farmacia = () => {
 
 
 
-    <div style={{display:'flex',flexWrap:'wrap',marginLeft:'10%',width:'90%',justifyContent:'start'}}>
+    <div style={{display:'flex',flexWrap:'wrap',marginLeft:'2%',width:'90%',justifyContent:'start'}}>
 
       {items.map(item =>(
         <CardItem name={item.name} image={item.image} price={item.price} id={item._id}/>

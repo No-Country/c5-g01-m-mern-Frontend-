@@ -117,8 +117,8 @@ const Register =() => {
               />
 
             
-              <div style={{width:'45%',borderLeft:'4px solid #41CE12',backgroundColor:'#C2EBB4',textAlign:'center'}}><p style={{color:'green'}}>{successMessage}</p></div>
-              <div style={{width:'45%',borderLeft:'4px solid red',backgroundColor:'	#FA8072',textAlign:'center'}}><p style={{color:'reed'}}>{errorMessageBackend}</p></div>
+           {successMessage ?<div style={{width:'45%',borderLeft:'4px solid #41CE12',backgroundColor:'#C2EBB4'}}><p style={{color:'green',textAlign:'center'}}>{successMessage}</p></div> : null } 
+           {errorMessageBackend?    <div style={{width:'45%',borderLeft:'4px solid red',backgroundColor:'	#FA8072',textAlign:'center'}}><p style={{color:'reed'}}>{errorMessageBackend}</p></div>: null} 
               <button
               style={{backgroundColor:'#CFCFCF',border:'none',width:'45%',height:'50px',color:'white'}}
                 type="submit"

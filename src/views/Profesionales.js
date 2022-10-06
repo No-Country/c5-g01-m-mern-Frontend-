@@ -4,8 +4,8 @@ import DropDownProfesion from "../components/dropdowns/DropDownProfesion";
 import DropDownZona from "../components/dropdowns/DropDownZona";
 import { useContext,useState} from "react";
 import { DropdownsContext } from "../context/authContext";
-import { Icon } from '@iconify/react';
 import { Link } from "react-router-dom";
+import CardProfessional from "../components/CardProfessional";
 
 const Profesionales = () => {
   const [errorMessage, setErrormessage] = useState()
@@ -67,53 +67,7 @@ const Profesionales = () => {
 <div style={{display:'flex',width:'100%',justifyContent:'center',marginTop:'10px'}}>
           { professionals?
         professionals.map(item => (
-        <div style={{marginTop:'5%'}} key={item._id} id='Card_Background'>
-
-        <div id='Card_Name'>
-        
-            <h1 id='Card_h1'>{item.name} {item.lastname}</h1>
-            <p id='Card_professional'>{item.professional}</p>
-        
-            <div id='Card_StarsContainer'>
-                <p id='Valoraciones'>Valoraciones</p>
-                <div id='Stars'>
-                <Icon icon="ant-design:star-filled" color="#ffc700" />
-                <Icon icon="ant-design:star-filled" color="#ffc700" />
-                <Icon icon="ant-design:star-filled" color="#ffc700" />
-                <Icon icon="ant-design:star-filled" color="#ffc700" />
-               <Icon icon="ant-design:star-filled" color="#BDBDBD" />
-                </div>
-            </div>
-        
-        
-        </div>
-        
-        <div id='Card_description'>
-        
-        <p id='Card_descriptionTitle'>Días y horarios de atención</p>
-        
-        <p id='Card_time'>{item.time1}</p>
-        <p id='Card_time2'>{item.time2}</p>
-        
-        <p id='Card_Ubicación'>Ubicación</p>
-        <p id='Card_direccion'>Dirección : {item.geoLocation}</p>
-        
-        
-            <Link to={`/profile/consultas/${item._id}`} id='Card_ConsultaDigital'>
-            <Icon icon="bxs:calendar" style={{marginLeft:'5px',fontSize:'16px',marginRight:'5px',color:"#B632F4"}}  />
-            <p style={{marginBottom:'0',fontSize:'10px'}}>Reservar consulta digital</p>
-            </Link>
-        
-        
-        </div>
-        
-        <div id='Card_Buttons'>
-        <Link to={`/profile/consultasText/${item._id}`} id='Card_Enviar'>Enviar Consulta</Link>
-        <Link to={`/profile/consultas/${item._id}`} id='Card_DigitalButton'>Consulta digital</Link>
-
-        </div>
-        
-        </div>
+          <CardProfessional id={item._id} name={item.name} lastname={item.lastname} professional={item.professional} time1={item.time1} time2={item.time2} geoLocation ={item.geoLocation} />
         
         
     )) 
@@ -123,9 +77,9 @@ const Profesionales = () => {
         {errorMessage ? <div style={{width:'100%',display:'flex',marginTop:'80px',justifyContent:'center'}}> <div style={{background:'#FFDBDB',border:'2px solid red'}}><p style={{marginTop:'10px',padding:'10px',color:'red'}}>{errorMessage}</p></div></div> : null}  
           
         <div style={{display:'flex',justifyContent:'center',marginTop:'80px'}}>
-          <button onClick={getProfessional}  style={{border:'none',width:'424px'}}
+          <button onClick={getProfessional}  style={{border:'none',width:'424px',backgroundColor:'#B632F4'}}
           type="submit">
-            <p style={{paddingTop:'14px',backgroundColor:'#B632F4',color:'white',fontWeight:600,height:'54px'}}>Buscar</p>
+            <p style={{paddingTop:'5%',paddingLeft:'44%',fontSize:'20px',color:'white',fontWeight:600,height:'54px'}}>Buscar</p>
           </button>
         </div>
     </>
