@@ -8,20 +8,29 @@ import swal from "sweetalert";
 
 const CreditCardForm = () => {
 
-const [drug, setDrug] = useState()
 const {itemCart} = useContext(DropdownsContext)
 
-  useEffect(() => {
-    const data = itemCart;
-    fetch(`http://localhost:3080/drug/get-drugsById/${data.drug}`)
-    .then(resp => resp.json())
-    .then(respJSON => setDrug(respJSON.msg))
-  }, [])
-
-  
   const handleClick = (e)=>{
     e.preventDefault();
+    
+    itemCart.map(item => {
+      const data  = {Paciente:item.Paciente,created:item.created,drug:item.drug}
+      fetch('http://localhost:3080/pedido/create-drugs',{
+        method:'POST',
+        mode:'cors',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+      })
+      .then(resp=> resp.json())
+      .then(resp => console.log(resp))
+
+    })
+
+
     return swal("Compra realizada con éxito!","Gracias por confiar en Management Health", "success")
+
   }
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
@@ -29,7 +38,12 @@ const {itemCart} = useContext(DropdownsContext)
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
 
-  if(!drug) return 'loading'
+  if(!itemCart) return 'loading'
+
+  
+
+
+
 
   return (
     <div style={{display:'flex',width:'100%',justifyContent:'space-around',marginTop:'5%'}}>
@@ -91,7 +105,7 @@ const {itemCart} = useContext(DropdownsContext)
       <table style={{width:'200px'}}>
 
   <thead>
-    <h1>Resumen Pedido</h1>
+    <p>Resumen Pedido</p>
     <tr>
       <th className="th_name">Nombre</th>
       <th className="th_name">Cantidad</th>
@@ -99,19 +113,24 @@ const {itemCart} = useContext(DropdownsContext)
     </tr>
     <hr/>
   </thead>
-  <tbody>
-    <tr >
-      <td id="td_drugMap">{drug.name}</td>
+
+    {itemCart.length !== 0 && 
+
+   itemCart.map(item =>(
+
+      <tbody>
+    
+      <tr >
+      <td id="td_drugMap">{item.drug.name}</td>
       <td style={{paddingLeft:'50px',paddingTop:'10px',paddingBottom:'10px'}}>(x1)</td>
-      <td id="td_drugMapPrice">${drug.price}</td>
+      <td id="td_drugMapPrice">${item.drug.price}</td>
     </tr>
     <hr/>
+  
+        </tbody>
+   ))
 
-    <tr >
-      <td id="td_Totalprice" colSpan={2}>Precio TOTAL</td>
-      <td id="td_DrugPrice">${drug.price}</td>
-    </tr>
-  </tbody>
+    }
 </table>
 </div>
 

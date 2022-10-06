@@ -1,5 +1,5 @@
 
-import { useContext } from "react";
+import { useContext ,useEffect} from "react";
 import { Card } from "react-bootstrap";
 import { DropdownsContext } from "../context/authContext";
 import './CardItem.css'
@@ -12,8 +12,16 @@ function CardItem ({image, name, price,id}){
   const date = new Date()
  
 
-  console.log(image)
+  const addToCart = () =>{
+    console.log(id)
 
+      fetch(`http://localhost:3080/drug/get-drugsById/${id}`)
+      .then(resp => resp.json())
+      .then(respJSON => setCart([...itemCart,{drug:respJSON.msg,Paciente:userInfo.data._id,created:date.toLocaleString()},]))
+
+  console.log(itemCart)
+    
+}
 
     return (
 
@@ -29,7 +37,7 @@ function CardItem ({image, name, price,id}){
            </Card.Text>
            </div>
 
-           <button onClick={() => setCart({drug:id,Paciente:userInfo.data._id,created:date.toLocaleString()}) } id="Card_AddToCart">Agregar</button>
+           <button onClick={ addToCart} id="Card_AddToCart">Agregar</button>
            </div>
          </Card.Body>
          </div>

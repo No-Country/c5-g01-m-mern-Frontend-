@@ -11,7 +11,6 @@ const Profesionales = () => {
   const [errorMessage, setErrormessage] = useState()
   const [professionals, setProfessionals] = useState()
 
-  console.log(professionals)
   console.log(errorMessage)
 
   const {stateEspecialidad,stateProfesion,stateZona} = useContext(DropdownsContext)
