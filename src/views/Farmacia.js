@@ -22,14 +22,20 @@ const Farmacia = () => {
     <div>
 
 
-    <div style={{display:'flex',width:'95%',position:'relative',left:'2%',justifyContent:'end'}}><Link to='pago' style={{border:'none',background:'none'}}><p style={{fontSize:'30PX'}}><AiOutlineShoppingCart/></p></Link> </div>
+    <div style={{display:'flex',width:'95%',position:'relative',left:'2%',justifyContent:'end'}}>
+    <Link to='pago' style={{border:'none',background:'none'}}>
+        <p style={{fontSize:'30PX'}}>   
+        <AiOutlineShoppingCart/>
+        </p>
+    </Link> 
+    </div>
 
 
 
-    <div style={{display:'flex',flexWrap:'wrap',width:'100%',justifyContent:'start'}}>
+    <div style={{display:'flex',flexWrap:'wrap',marginLeft:'10%',width:'90%',justifyContent:'start'}}>
 
       {items.map(item =>(
-        <CardItem name={item.name} price={item.price} id={item._id}/>
+        <CardItem name={item.name} image={item.image} price={item.price} id={item._id}/>
       ))}
 
     </div>

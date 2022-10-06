@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext, useEffect, useState } from "react";
 import { DropdownsContext } from "../context/authContext";
 import Cards from "react-credit-cards";
+import '../styles/CreditCardForms.css'
 import "react-credit-cards/es/styles-compiled.css";
 import swal from "sweetalert";
 
@@ -31,7 +32,7 @@ const {itemCart} = useContext(DropdownsContext)
   if(!drug) return 'loading'
 
   return (
-    <div style={{display:'flex',width:'100%',justifyContent:'space-around',marginTop:'50px'}}>
+    <div style={{display:'flex',width:'100%',justifyContent:'space-around',marginTop:'5%'}}>
 
       <div style={{display:'flex'}}>
       <Cards
@@ -83,35 +84,38 @@ const {itemCart} = useContext(DropdownsContext)
 
       </form>
       </div>
+
       <div>
-        <div style={{border:'1px solid GRAY',borderRadius:'10px'}}>
+        <div style={{border:'1px solid GRAY'}}>
+
       <table style={{width:'200px'}}>
+
   <thead>
-    <h1 style={{fontSize:'14px',paddingTop:'10px',paddingLeft:'10px',width:'200px',textAlign:'center'}}>Resumen Pedido</h1>
+    <h1>Resumen Pedido</h1>
     <tr>
-      <th style={{paddingLeft:'30px',fontWeight:'normal'}}>Nombre</th>
-      <th style={{paddingLeft:'30px',fontWeight:'normal'}}>Cantidad</th>
-      <th style={{paddingLeft:'35px',paddingRight:'30px',fontWeight:'normal'}}>Precio</th>
+      <th className="th_name">Nombre</th>
+      <th className="th_name">Cantidad</th>
+      <th id="th_price">Precio</th>
     </tr>
-    <hr style={{marginTop:'0',marginBottom:'0',marginLeft:'30px',width:'100%'}}/>
+    <hr/>
   </thead>
   <tbody>
     <tr >
-      <td style={{paddingLeft:'30px',paddingTop:'10px',paddingBottom:'10px'}}>{drug.name}</td>
+      <td id="td_drugMap">{drug.name}</td>
       <td style={{paddingLeft:'50px',paddingTop:'10px',paddingBottom:'10px'}}>(x1)</td>
-      <td style={{paddingLeft:'40px',paddingTop:'10px',paddingBottom:'10px'}}>${drug.price}</td>
+      <td id="td_drugMapPrice">${drug.price}</td>
     </tr>
-    <hr style={{marginTop:'0',marginBottom:'0',marginLeft:'30px',width:'100%'}}/>
+    <hr/>
 
     <tr >
-      <td style={{paddingLeft:'30px',paddingTop:'10px',paddingBottom:'10px',fontWeight:'bolder',textAlign:'center'}} colSpan={2}>Precio TOTAL</td>
-      <td style={{paddingLeft:'40px',paddingTop:'10px',paddingBottom:'10px',fontWeight:'bolder'}}>${drug.price}</td>
+      <td id="td_Totalprice" colSpan={2}>Precio TOTAL</td>
+      <td id="td_DrugPrice">${drug.price}</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-<button onClick={handleClick} style={{marginTop:'5px',width:'100%',height:'56px',border:'none',backgroundColor:'#B632F4',borderRadius:'4px',color:'white'}}>PROCEDER A PAGAR</button>
+<button onClick={handleClick} id='button_pay' >PROCEDER A PAGAR</button>
       </div>
     </div>
 

@@ -37,7 +37,10 @@ export function AuthContextProvider({ children }) {
     [login, logout, isAuthenticated]
   );
 
-  return <AuthContext.Provider value={value}><DropdownsContext.Provider value={{stateZona,setZona,stateProfesion,setStateProfesion,stateEspecialidad,setStateEspecialidad,itemCart,setCart,setUserInfo,userInfo}}>{children}</DropdownsContext.Provider></AuthContext.Provider>
+  return <AuthContext.Provider value={value}>
+    <DropdownsContext.Provider value={{stateZona,setZona,stateProfesion,setStateProfesion,stateEspecialidad,setStateEspecialidad,itemCart,setCart,setUserInfo,userInfo}}>{children}</DropdownsContext.Provider>
+    
+    </AuthContext.Provider>
 }
 
 AuthContextProvider.propTypes = {

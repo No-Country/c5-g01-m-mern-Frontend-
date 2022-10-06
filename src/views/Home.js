@@ -6,13 +6,12 @@ const Home = () => {
     <div style={{display:'flex',justifyContent:'center',marginTop:'7%'}}>
   
 
-        <img src={img} alt=""></img>
+        <img style={{marginLeft:'10%'}} src={img} alt=""></img>
 
-      <div>
         <img src={logo} alt=""></img>
 
 
-      </div>
+
     </div>
   );
 };

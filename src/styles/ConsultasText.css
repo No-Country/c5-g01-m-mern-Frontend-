@@ -1,4 +1,4 @@
-#Consulta_ContainerBackground{
+#Consulta_CardBackground{
     width:60%;
     background-color:#00ee7781;
 }
@@ -16,4 +16,52 @@
     border: 2px solid #B632F4;
     color: #B632F4;
     height: 47px;
+}
+
+#card_Container{
+    width:300px;
+    height:100px;
+    border:2px solid #00EE76;
+    position:relative;
+    left:20%
+}
+
+#Profesional_data{
+    margin-bottom:0;
+    font-weight:600;
+    margin-top:0;
+    margin-left:10%;
+    padding-top:10px;
+}
+
+#Profesional_skills{
+    margin-bottom:0;
+    color:#999999;
+    margin-left:10%;
+}
+#Profesional_valor{
+    color:#999999
+}
+
+#Consulta_Background{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:1%;
+}
+
+#TextAreaForm{
+  width:90%;
+  position:relative;
+  left:5%;
+  margin-top:4%;
+
+}
+
+#Buttons_Container{
+    width:100%;
+    margin-top:10px;
+    padding-bottom:10px;
+    display:flex;
+    justify-content:space-between;
 }

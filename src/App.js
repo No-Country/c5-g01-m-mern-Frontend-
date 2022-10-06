@@ -28,7 +28,6 @@ import Farmacia from "./views/Farmacia";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Logout from "./views/Logout";
-import NotFoundPage from "./views/NotFoundPage";
 import Profesionales from "./views/Profesionales";
 import Profile from "./views/Profile";
 
@@ -45,7 +44,6 @@ function App() {
           <Route element={<PublicRoute />}>
             <Route path={LOGIN} element={<Login />}></Route>
             <Route path={SIGNUP} element={<Register />}></Route>
-            <Route path={NOT_FOUND_PAGE} element={<NotFoundPage />}></Route>
           </Route>
 
           <Route element={<PrivateRoute />}>

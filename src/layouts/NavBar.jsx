@@ -8,7 +8,7 @@ export default function NavBar() {
     <nav className="navigation">
       <a className="navbar-box" href="/">
         <div>
-          <NavLink  to="/profile/home">
+          <NavLink  to="/">
             <img className="logo" src={img} alt="management-health-logo"></img>
           </NavLink>
         </div>
@@ -29,7 +29,7 @@ export default function NavBar() {
           <ul>
             <li>
               <div className="Nav_DivLink">
-                <NavLink className="Nav_Link" to="/profile/home">
+                <NavLink className="Nav_Link" to="/">
                   Home
                 </NavLink>
               </div>

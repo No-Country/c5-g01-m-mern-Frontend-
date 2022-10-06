@@ -27,7 +27,6 @@ e.preventDefault()
   useEffect(() => {
 
     if(id){
-        console.log(id.id)
         fetch(`http://localhost:3080/professional/getProfessionalsId/${id.id}`)
         .then(resp => resp.json())
         .then(resp => setProfessional(resp))
@@ -43,12 +42,12 @@ if(!professional) return 'Cargando'
   return (
     <div >
          { professional ?
-          <div style={{width:'300px',height:'100px',border:'2px solid #00EE76',position:'relative',left:'20%'}}>
-            <p style={{marginBottom:'0',fontWeight:600,marginTop:'0',marginLeft:'10%',paddingTop:'10px'}}>{professional.data.name} {professional.data.lastname}</p>
-            <p style={{marginBottom:'0',color:'#999999',marginLeft:'10%'}}>{professional.data.professional} {professional.data.specialty}</p>
+          <div id='card_Container'>
+            <p id='Profesional_data'>{professional.data.name} {professional.data.lastname}</p>
+            <p id='Profesional_skills'>{professional.data.professional} {professional.data.specialty}</p>
          
             <div style={{display:'flex',marginLeft:'10%'}} id=''>
-                <p style={{color:'#999999'}} id='Valoraciones'>Valoraciones</p>
+                <p id='Profesional_valor'>Valoraciones</p>
                 <div  style={{display:'flex'}}>
                     <p>⭐</p>
                     <p>⭐</p>
@@ -57,26 +56,18 @@ if(!professional) return 'Cargando'
                     <p>⭐</p>
                 </div>
             </div>
-    
 
-
-
-
-     
- 
-
-
-          </div>
+         </div>
         : 'error' }
 
      
-         <div style={{width:'100%',display:'flex',justifyContent:'center',marginTop:'1%'}}>
-          <div id='Consulta_ContainerBackground'>
-           <form style={{width:'90%',position:'relative',left:'5%',marginTop:'4%'}}>
+         <div id='Consulta_Background'>
+          <div id='Consulta_CardBackground'>
+           <form id='TextAreaForm'>
               <div>
                <textarea id="w3review" name="w3review" style={{width:'100%',height:'500px'}}>{text}</textarea>
              </div>
-             <div style={{width:'100%',marginTop:'10px',paddingBottom:'10px',display:'flex',justifyContent:'space-between'}}>
+             <div id='Buttons_Container'>
                <button id='Delete_Text' onClick={borrarTexto}>Borrar</button>
                <button id='Submit_Text' onClick={submitText} type='submit'>Enviar</button>
              </div>
