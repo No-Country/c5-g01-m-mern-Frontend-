@@ -17,7 +17,7 @@ function CardItem ({image, name, price,id}){
 
       fetch(`http://localhost:3080/drug/get-drugsById/${id}`)
       .then(resp => resp.json())
-      .then(respJSON => setCart([...itemCart,{drug:respJSON.msg,Paciente:userInfo.data._id,created:date.toLocaleString()},]))
+      .then(respJSON => setCart([...itemCart,{drug:respJSON.msg},]))
 
   console.log(itemCart)
     

@@ -69,10 +69,6 @@ const Consultas =() => {
         <p id='Card_direccion'>Dirección : {item.geoLocation}</p>
         
         
-            <Link to={`/profile/consultas/${item._id}`} id='Card_ConsultaDigital'>
-            <Icon icon="bxs:calendar" style={{marginLeft:'5px',fontSize:'16px',marginRight:'5px',color:"#B632F4"}}  />
-            <p style={{marginBottom:'0',fontSize:'10px'}}>Reservar consulta digital</p>
-            </Link>
         
         
         </div>

@@ -1,9 +1,5 @@
 import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
-import { DayPicker } from 'react-day-picker';
-import { format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
 import Swal from 'sweetalert2'
 
@@ -45,13 +41,15 @@ const ConsultasId =() => {
     <div>
 
       { professional ?
-          <div style={{width:'300px',height:'100px',border:'2px solid #00EE76',position:'relative',left:'20%'}}>
-            <p style={{marginBottom:'0',marginTop:'0',paddingTop:'10px',paddingLeft:'7%'}}>{professional.data.name} {professional.data.lastname}</p>
+
+      <div style={{ border:'1px solid gray',position:'relative',height:'300px',width:'402px',left:'40%'}}>
+          <div style={{width:'400px',height:'100px',border:'2px solid #00EE76',position:'relative'}}>
+            <p style={{marginBottom:'0',marginTop:'0',paddingTop:'10px',paddingLeft:'2%'}}>{professional.data.name} {professional.data.lastname}</p>
             <p style={{marginBottom:'0',color:'#999999',paddingLeft:'7%'}}>{professional.data.professional} {professional.data.specialty}</p>
          
             <div style={{display:'flex'}} id=''>
                 <p style={{color:'#999999',paddingLeft:'7%'}} id='Valoraciones'>Valoraciones</p>
-                <div  style={{display:'flex'}}>
+                <div  style={{display:'flex',width:'100px'}}>
                     <p>⭐</p>
                     <p>⭐</p>
                     <p>⭐</p>
@@ -84,8 +82,10 @@ const ConsultasId =() => {
 
 
           </div>
+     </div>
         : 'error' }
     </div>
+    
   )
 }
 

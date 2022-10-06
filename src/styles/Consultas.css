@@ -1,6 +1,6 @@
 #Card_Background{
     width: 310px;
-    height: 435px;
+    height: 485px;
     background-color: #00ee776f;
     margin-left: 20px;
     margin-bottom: 10px;
@@ -12,10 +12,11 @@
     top: 30px;
     margin-left: 5%;
     width: 90%;
-    height: 80px;
+    height: 100px;
 }
 #Card_description{
     background-color: white;
+    text-align: center;
     top: 35px;
     height: 250px;
     width: 90%;
@@ -32,7 +33,7 @@
 #Card_professional{
     font-size: 12px;
     color: #999999;
-    margin-left: 20px;
+    margin-left: 1px;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -40,43 +41,47 @@
     display: flex;
     font-size: 12px;
     color: #999999;
-    margin-left: 20px;
+    margin-left: 1px;
     margin-top: 0;
 
 }
 
 #Stars{
-    margin-top: 5px;
+    margin-top: 17px;
     padding-left: 10px;
     display: flex;
 }
 #Card_descriptionTitle{
-    padding-left: 20px;
+padding-left:1%;
+width: 100%;
     font-weight: 600;
     padding-top: 15px;
 }
 #Card_time{
- padding-left: 20px;
+ padding-left: 1px;
  font-size: 13px;
  color: #999999 ;
+ width: 100%;
 }
 #Card_time2{
- padding-left: 20px;
+ padding-left: 1px;
  font-size: 13px;
+ width: 100%;
  color: #999999 ;
 }
 
 #Card_Ubicación{
-    padding-left: 20px;
+    padding-left: 25%;
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 0;
 }
 
 #Card_direccion{
-    padding-top: 10px;
+    padding-top: 1px;
+    width: 100%;
     color: #999999 ;
-    padding-left: 20px;
+    padding-left: 1px;
     font-size: 13px;
     margin-top: 0;
 }

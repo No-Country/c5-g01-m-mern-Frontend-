@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useContext, useEffect, useState } from "react";
-import { DropdownsContext } from "../context/authContext";
+import { AuthContext, DropdownsContext } from "../context/authContext";
 import Cards from "react-credit-cards";
 import '../styles/CreditCardForms.css'
 import "react-credit-cards/es/styles-compiled.css";
@@ -9,29 +9,37 @@ import swal from "sweetalert";
 const CreditCardForm = () => {
 
 const {itemCart} = useContext(DropdownsContext)
+const {userInfo} = useContext(DropdownsContext)
 
   const handleClick = (e)=>{
     e.preventDefault();
     
-    itemCart.map(item => {
-      const data  = {Paciente:item.Paciente,created:item.created,drug:item.drug}
-      fetch('http://localhost:3080/pedido/create-drugs',{
-        method:'POST',
-        mode:'cors',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify(data)
-      })
-      .then(resp=> resp.json())
-      .then(resp => console.log(resp))
+  let allDrugs =  itemCart.map(item => {
+      let allDrugs ={drugs:item.drug}
 
+      return allDrugs
     })
+
+const data = {Paciente:userInfo.data._id,drug:allDrugs}
+
+
+    fetch('http://localhost:3080/pedido/create-drugs',{
+      method:'POST',
+      mode:'cors',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(data)
+    })
+    .then(resp=> resp.json())
+    .then(resp => console.log(resp))
 
 
     return swal("Compra realizada con éxito!","Gracias por confiar en Management Health", "success")
 
   }
+
+  
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [expiry, setExpiry] = useState("");

@@ -46,9 +46,9 @@ if(!professional) return 'Cargando'
             <p id='Profesional_data'>{professional.data.name} {professional.data.lastname}</p>
             <p id='Profesional_skills'>{professional.data.professional} {professional.data.specialty}</p>
          
-            <div style={{display:'flex',marginLeft:'10%'}} id=''>
+            <div style={{display:'flex',marginLeft:'1%'}} id=''>
                 <p id='Profesional_valor'>Valoraciones</p>
-                <div  style={{display:'flex'}}>
+                <div  style={{display:'flex',width:'1%'}}>
                     <p>⭐</p>
                     <p>⭐</p>
                     <p>⭐</p>
